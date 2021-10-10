@@ -1,0 +1,48 @@
+<%- include('./partials/header.ejs') %>
+    <section class="container mt-5 mb-5">
+        <div class="text-center mb-4">
+            <img src="/img/icons8_hospital_3_64.png" alt="" class="img-fluid">
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card register shadow">
+                    <div class="card-header text-center" style="background: #3E5DFF;">                        
+                        <div class="card-title text-white"><h1>EMERGENCY CALL</h1></div>
+                    </div>
+                    <%- include('./partials/messages.ejs') %> 
+                    <div class="card-body">
+                        <form action="/emergency" method="POST">
+                            <div class="form-group">
+                                <label for="Firstname">Firstname</label>
+                                <input type="text" class="form-control" name="Firstname" placeholder="Firstname">
+                            </div><br>
+                            <div class="form-group">
+                                <label for="Lastname">Lastname</label>
+                                <input type="text" class="form-control" name="Lastname" placeholder="Lastname">
+                            </div><br>
+                            <div class="form-group">
+                                <label for="Age">Age</label>
+                                <input type="number" class="form-control" name="Age" placeholder="Age">
+                            </div><br>
+                            <div class="form-group">
+                                <label for="Address">Address</label>
+                                <input type="text" class="form-control" name="Address" placeholder="Address">
+                            </div><br>
+                            <div class="form-group">
+                                <label for="Landmark">Landmark</label>
+                                <input type="text" class="form-control" name="Landmark" placeholder="Landmark: (Optional)">
+                            </div><br>
+                            <div class="form-group">
+                                <label for="Phone">Phone</label>
+                                <input type="text" class="form-control" name="Phone" placeholder="Phone">
+                            </div><br>
+                            <button type="submit" class="btn btn-block btn1">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </section>
+<%- include('./partials/footer.ejs') %> 

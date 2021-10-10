@@ -1,0 +1,88 @@
+<%- include('./partials/header.ejs') %> 
+
+<section class="container mt-5">
+    <%- include('../partials/messages.ejs') %> 
+    <div class="responsive-table shadow">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Date</th>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% if(appointments.length > 0){ %> 
+                    <% appointments.forEach((appointment)=>{ %> 
+                        <tr>
+                            <td><%= appointment.time %> <%= appointment.timeType %>  </td>
+                            <td><%= appointment.date %> </td>
+                            <td><%= appointment.Firstname %> <%= appointment.Lastname %> </td>
+                            <td>Dr. <%= appointment.doctor.Firstname %> <%= appointment.doctor.Lastname %> </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modelId<%= appointment._id %>"><img src="\img\icons8_Edit_Production_Order_16.png" alt="" class="img-fluid"></button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="modelId<%= appointment._id %>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Edit Appointment</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                        <form action="/admin/editAppoint/<%= appointment._id %>?_method=PUT" method="POST">
+                                            <div class="form-group mb-2">
+                                                <label for="Time">Schedule Time <small class="text-danger"><strong>*</strong></small></label>
+                                                <input type="text" class="form-control" name="time" id="time" value="<%= appointment.time %> " required>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label for="Time-Type">Time-Type <small class="text-danger"><strong>*</strong></small></label>
+                                                <input type="text" name="timeType" class="form-control" value='<%= appointment.timeType %>' required>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label for="Date">Schedule Date <small class="text-danger"><strong>*</strong></small></label>
+                                                <input type="text" class="form-control" name="date" id="date" value="<%= appointment.date %> " required>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label for="Condition">Current Condition <small class="text-danger"><strong>*</strong></small></label>
+                                                <input type="text" name="condition" class="form-control" value='<%= appointment.condition %>' required>
+                                            </div>
+                                            <button type="submit" class="btn btn-block btn-primary">Update</button>
+                                        </form>
+                                        </div>
+                                    </div>                          
+                                    </div>
+                                </div>
+                            </div>
+                            </td>
+                            <td>
+                                <form action="/admin/<%= appointment._id %>/delete?_method=DELETE " method="POST">
+                                    <button type="submit" class="btn btn-danger btn-sm"><img src="\img\icons8_trash_16.png" alt="" class="img-"></button>
+                                </form>    
+                            </td>
+                        </tr>
+                    <% }) %> 
+                <% }else{ %> 
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <strong>No Appointments Available Yet :)</strong> 
+                    </div>
+                <% } %> 
+            </tbody>
+        </table>
+    </div>
+</section>
+
+</body>
+<script src="\bootstrap-5\js\Jquery.js"></script>
+<script src="\bootstrap-5\js\bootstrap.min.js"></script>
+</html>

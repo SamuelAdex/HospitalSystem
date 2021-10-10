@@ -1,0 +1,239 @@
+<%- include('./partials/header.ejs') %>
+    <section class="container-fluid mt-4">      
+      
+          <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary mb-3" style="margin-left: 7rem;" data-toggle="modal" data-target="#modelId">
+          Add Doctor
+        </button>
+
+      <div class="row">        
+          <div class="col-md-1"></div>
+          <div class="col-md-9"><%- include('../partials/messages.ejs') %>  
+
+              <div class="table-responsive shadow">
+                  <table class="table table-striped">
+                      <tr>
+                          <th>Doctor Name</th>
+                          <th>Doctor Email</th>
+                          <th>Doctor Position</th>
+                          <th>Doctor Gender</th>
+                          <th>Doctor Contact</th>
+                          <th>Edit</th>
+                          <th>Delete</th>
+                      </tr>
+                      
+                      <% if(doctors.length > 0){ %> 
+                        <% doctors.forEach((doctor)=>{ %> 
+                          <tr>
+                              <td>Dr. <%= doctor.Firstname %> <%= doctor.Lastname %> </td>
+                              <td><%= doctor.email %> </td>
+                              <td><%= doctor.position %> </td>
+                              <td><%= doctor.gender %> </td>
+                              <td><%= doctor.phone %> </td>
+                              <td>
+                                  <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#modelId<%= doctor._id %>"><img src="\img\icons8_Edit_Production_Order_16.png" alt="" class="img-fluid"></button>
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="modelId<%= doctor._id %>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                          <div class="modal-header bg-info text-white">
+                                              <h5 class="modal-title">Edit Appointment</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                              </button>
+                                          </div>
+                                      <div class="modal-body">
+                                          <div class="container-fluid">
+                                          <form action="/admin/editDoctor/<%= doctor._id %>?_method=PUT" method="POST" enctype="multipart/form-data">         
+                                              <div class="row">
+                                                <div class="col-6">
+                                                  <div class="form-group mb-3">
+                                                    <label for="firtname">Firstname</label>
+                                                    <input type="text" name="Firstname" class="form-control" value="<%= doctor.Firstname %>" placeholder="Firstname" required>
+                                                  </div>
+                                                </div>
+                                                <div class="col-6 mb-3">
+                                                  <div class="form-group">
+                                                    <label for="lastname">Lastname</label>
+                                                    <input type="text" name="Lastname" class="form-control" value="<%= doctor.Lastname %>" placeholder="Lastname" required>                                                    
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                  <div class="form-group">
+                                                    <label for="username">Username</label>
+                                                    <input type="text" name="username" class="form-control" value="<%= doctor.username %>" placeholder="Username" required>
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                  <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" name="email" class="form-control" value="<%= doctor.email %>" placeholder="Email" required>
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                  <div class="form-group">
+                                                    <label for="phone">Phone</label>
+                                                    <input type="text" name="phone" class="form-control" value="<%= doctor.phone %>" placeholder="Contact" required>
+                                                  </div>
+                                                </div>
+                                                <div class="col-6 mb-3">
+                                                  <div class="form-group">
+                                                    <label for="gender">Gender</label>
+                                                    <select name="gender" id="" class="form-control" required>
+                                                      <option value="" selected disabled>Select gender</option>
+                                                      <option value="male">male</option>
+                                                      <option value="female">female</option>
+                                                    </select>
+                                                    <small>current gender: <i><%= doctor.gender %></i></small>
+                                                  </div>
+                                                </div>
+                                                <div class="col-6 mb-3">
+                                                  <div class="form-group">
+                                                    <label for="position">Position</label>
+                                                    <select name="position" id="" class="form-control" required>
+                                                      <option value="" selected disabled>Select position</option>
+                                                      <option value="Senior Doctor">Senior Doctor</option>
+                                                      <option value="Junior Doctor">Junior Doctor</option>
+                                                    </select>
+                                                    <small>current position: <i><%= doctor.position %></i></small>
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                  <div class="form-group">
+                                                    <label for="profile">Profile Pix</label>
+                                                    <input type="file" name="image" id="" class="form-control">
+                                                    <img src="/uploads/<%= doctor.profile %> " width="30%" height="30%" alt="" class="img-fluid">
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                  <div class="form-group">
+                                                    <label for="password">Password</label>
+                                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                                  </div>
+                                                </div>
+                                              </div>                                                
+                                              <button type="submit" class="btn btn-block btn-info">Update</button>
+                                          </form>
+                                          </div>
+                                      </div>                          
+                                      </div>
+                                  </div>
+                              </div>
+                              </td>
+                              <td>
+                                <form action="/admin/deleteDoctor/<%= doctor._id %>?_method=DELETE" method="POST">
+                                  <button type="submit" class="btn btn-danger btn-sm"><img src="\img\icons8_trash_16.png" alt="" class="img-fluid"></button>
+                                </form>
+                              </td>
+                          </tr>
+                        <% }) %> 
+                      <% }else{ %> 
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                          <strong>No Doctors Available Yet :)</strong> 
+                        </div>
+                      <% } %> 
+                  </table>
+              </div>
+          </div>
+          <div class="col-md-1"></div>
+      </div>      
+  </section>
+
+    
+  <!-- Modal -->
+  <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title">Add Doctor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <div class="modal-body">
+          <div class="row">
+            <form action="/admin/addDoctor" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="Firstname">FirstName</label>
+                <input type="text" class="form-control" name="Firstname" placeholder="Firstname" required>
+              </div><br>                    
+              <div class="form-group">
+                <label for="Lastname">LastName</label>
+                <input type="text" class="form-control" name="Lastname" placeholder="Lastname" required>
+              </div>  <br>                      
+              <div class="form-group">
+                <label for="Username">Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Username" required>
+              </div>   <br>                     
+              <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Email" required>
+              </div>   <br>                     
+              <div class="form-group">
+                <label for="Phone">Phone</label>
+                <input type="text" class="form-control" name="phone" placeholder="phone" required>
+              </div><br>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Gender">Gender</label>
+                    <select name="gender" id="" class="form-control">
+                      <option value="" selected>Select gender</option>
+                      <option value="male">male</option>
+                      <option value="female">female</option>
+                    </select>
+                  </div><br>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Position">Position</label>
+                    <select name="position" id="" class="form-control" required>
+                      <option value="" selected>Select position</option>
+                      <option value="Senior Doctor">Senior Doctor</option>
+                      <option value="junior Doctor">Junior Doctor</option>
+                    </select>
+                  </div><br>
+                </div>
+                <div class="col-12 mb-3">
+                  <div class="form-group">
+                    <label for="profile">Profile Pix</label>
+                    <input type="file" name="image" id="" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" name="password" id="" class="form-control" placeholder="Password" required>
+                  </div><br>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Password1">Confirm Password</label>
+                    <input type="password" name="password1" id="" class="form-control" placeholder="Confirm Password" required>
+                  </div><br>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-block btn-primary">Create</button>
+            </form>
+        </div>      
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    /*$('#exampleModal').on('show.bs.modal', event => {
+      var button = $(event.relatedTarget);
+      var modal = $(this);
+      // Use above variables to manipulate the DOM
+      
+    });*/
+  </script>
+
+    <script src="/bootstrap-5/js/Jquery.js"></script>
+    <script src="/bootstrap-5/js/bootstrap.min.js"></script>
+</body>
+</html>

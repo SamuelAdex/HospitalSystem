@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital | Home</title>
+    <link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap-5/css/styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <a href="/"><img src="/img/icons8_hospital_3_64.png" alt="" class="img-fluid"></a>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 mt-4">                
+                <div class="card register">
+                    <div class="card-header text-white">
+                        <h4>Doctor Log-In</h4>
+                    </div>
+                    <div class="card-body">
+                        <%- include("../partials/messages.ejs") %> 
+                        <form action="/doctor/login" method="POST">
+                            <div class="form-group">
+                                <label for="DoctorEmail">Doctor's Email <small class="text-danger"><strong>*</strong></small></label>
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="Password">Password <small class="text-danger"><strong>*</strong></small></label>
+                                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                            </div><br>
+                            <button type="submit" class="btn btn-block btn1">Login</button>                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+    <script src="/bootstrap-5/js/Jquery.js"></script>
+    <script src="/bootstrap-5/js/bootstrap.min.js"></script>    
+</body>
+</html>

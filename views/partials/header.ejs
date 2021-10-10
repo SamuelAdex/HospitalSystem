@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="\img\icons8_hospital_3.ico" type="image/x-icon">
+    <title>Hospital | Home</title>
+    <link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap-5/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light rounded">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img src="/img/icons8_hospital_3_48.png" alt="" class="img-fluid mr-1 mb-2">ExoCare</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+          
+                <div class="collapse navbar-collapse" id="navbarsExample09">
+                  <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                    <li class="nav-item active">
+                      <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/covid">Covid-Tracker</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/emergency">Emergency</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link btn-sm" style="border: 3px solid #3E5DFF" href="/doctor/login">DOCTOR LOGIN</a>
+                    </li>
+                    <% if(auth){ %>
+                      <li class="nav-item dropdown">
+                        <% if(user.role === 'doctor'){ %> 
+                          <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-expanded="false">Dr. <%= user.username %> </a>
+                        <% }else{ %> 
+                          <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-expanded="false"><%= user.username %> </a>
+                        <% } %> 
+                        <ul class="dropdown-menu" aria-labelledby="dropdown09">
+                          <% if(user.role === 'admin'){ %> 
+                            <li><a class="dropdown-item" href="/admin/dashboard">Dashboard</a></li>
+                          <% } %> 
+
+                          <% if(user.role === 'doctor'){ %> 
+                            <li><a class="dropdown-item" href="/doctor/dashboard">Dashboard</a></li>                          
+                          <% }else if(user.role === 'user'){ %>                                                         
+                            <li><a class="dropdown-item" href="/appointment/appoint">Appointment</a></li>
+                          <% } %> 
+                            <li><a class="dropdown-item" href="/Auth/Profile">Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="/Auth/logout">Logout</a></li>                          
+                        </ul>
+                      </li>
+                    <% } %> 
+                  </ul>
+                  <form>
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                  </form>
+                </div>
+              </div>
+            </nav>
+        </div>
+    </header>

@@ -1,0 +1,83 @@
+<%- include("./partials/header.ejs") %> 
+
+    <section class="showcase mb-5">
+      <div class="container text-center p-lg-5"><br><br><br><br>
+        <h1 style="color: #3E5DFF;"><b>We Care, We Info & We Prescribe</b></h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia natus nihil beatae laudantium aspernatur enim! Earum laboriosam deleniti, nam quidem sapiente corporis harum quae voluptate iure molestias, expedita nostrum placeat.</p>
+        <% if(auth){ %> 
+          <h1 style="color: #3E5DFF;"><strong><b>EXOCARE CARES ABOUT YOU :)</b></strong></h1>
+        <% }else{ %> 
+          <a href="/Auth/register" class="btn btn-md btn1">Get Started</a>
+          <a href="/Auth/login" class="btn btn-md btn2">Login</a>
+        <% } %> 
+      </div>
+    </section>
+
+    <section class="services container text-white">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card shadow text-center">
+            <div class="card-body">
+              <img src="/img/icons8_ambulance_64.png" alt="" class="responsive-img"/>
+              <h4>Emergency Cases</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt iusto, dolores eaque eius dolor itaque odit</p>
+            </div>
+          </div><br>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow text-center">
+            <div class="card-body">
+              <img src="/img/icons8_time_64.png" alt="" class="responsive-img"/>
+              <h4>Working hours</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt iusto, dolores eaque eius dolor itaque odit</p>
+            </div>
+          </div><br>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow text-center">
+            <div class="card-body">
+              <img src="/img/icons8_calendar_4_64.png" alt="" class="responsive-img"/>
+              <h4>Clinic Timetable</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt iusto, dolores eaque eius dolor itaque odit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mockup mt-4 mb-5 p-5">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="text-muted">Digital HealthCare</p>
+            <h2>HealthCare Via <span style="color: blueviolet">Network</span></h2>
+            <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. suscipit in reprehenderit eveniet porro</small>
+            <ul class="list-unstyled">
+              <li class="list-item"></li>
+              <li class="list-item"></li>
+              <li class="list-item"></li>
+              <li class="list-item"></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <img src="img/pexels-public-domain-pictures-60022.jpg" alt="" class="img-fluid">
+          </div>
+          <div class="col-md-6">
+            <img src="img/pexels-pixabay-139398.jpg" alt="" class="img-fluid mt-4">
+          </div>
+          <div class="col-md-6">
+            <p class="text-muted mt-5">Online Drugs Prescription</p>
+            <h2>Prescription Via <span style="color: blueviolet">Network</span></h2>
+            <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. suscipit in reprehenderit eveniet porro</small>
+            <ul class="list-unstyled">
+              <li class="list-item"></li>
+              <li class="list-item"></li>
+              <li class="list-item"></li>
+              <li class="list-item"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<%- include("./partials/footer.ejs") %> 

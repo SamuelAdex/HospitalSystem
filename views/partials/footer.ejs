@@ -1,0 +1,53 @@
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">          
+          <ul class="list-unstyled">
+            <li><strong>Contact</strong></li>
+            <div style="color: #3E5DFF; font-weight: 600; font-size: 10pt">
+              <li class="list-item">Email: adexcorp@gmail.com</li>
+              <li class="list-item">Phone: +234676676976</li>
+              <li class="list-item">Address: jgdhchcdcusyuodgydajhccsuisdcsj</li>
+            </div>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-unstyled">
+            <li class="list-item"><strong>Quick Links</strong></li>
+            <li class="list-item"><a href="" class="list">Emergency</a></li>
+            <li class="list-item"><a href="" class="list">Prescriptions</a></li>
+            <li class="list-item"><a href="" class="list">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <p><strong>Sponsored By</strong></p>          
+        </div>
+      </div><hr>
+      <div class="text-center">
+        <p>Designed & Developed By Samuel Adex</p>
+        <small>&copy;2021 CopyRight</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/bootstrap-5/js/Jquery.js"></script>
+  <script src="/bootstrap-5/js/bootstrap.min.js"></script>
+  <script defer>
+    fetch('https://corona.lmao.ninja/v2/countries/Nigeria')
+    .then((response) =>{
+      return response.json();
+    })
+    .then((data) =>{
+      document.getElementById('country').innerHTML = data.country;
+      document.getElementById('active-cases').innerHTML = data.active;
+      document.getElementById('total-cases').innerHTML = data.cases;
+      document.getElementById('total-deaths').innerHTML = data.deaths;
+      document.getElementById('critical-cases').innerHTML = data.critical;
+      document.getElementById('recovered-cases').innerHTML = data.recovered;
+      document.getElementById('test-done').innerHTML = data.tests;
+
+      console.log(data);
+    })
+  </script>
+</body>
+</html>

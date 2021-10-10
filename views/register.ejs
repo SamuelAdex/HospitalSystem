@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="\img\icons8_hospital_3.ico" type="image/x-icon">
+    <title>Hospital | SignUp</title>
+    <link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap-5/css/styles.css">
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <a href="/"><img src="/img/icons8_hospital_3_64.png" alt="" class="img-fluid"></a>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 mt-4">
+                <div class="card register">
+                    <div class="card-header text-white">
+                        <h4>Register</h4>
+                    </div>
+                    <div class="card-body">
+                        <%- include('./partials/messages.ejs') %> 
+                        <form action="/Auth/register" method="POST">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="Firstname" class="form-control" placeholder="FirstName e.g: John" required>
+                                    </div><br>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="Lastname" class="form-control" placeholder="LastName e.g: Smith" required>
+                                    </div><br>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" name="username" class="form-control" placeholder="Username e.g: JohnSmith" required>
+                                    </div><br>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control" placeholder="Email e.g: name@gmail.com" required>
+                                    </div><br>
+                                </div>                                
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" name="phone" class="form-control" placeholder="Phone e.g: +2349074635487" required>
+                                    </div>
+                                </div>                                
+                            </div><br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                                    </div><br>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password1" class="form-control" placeholder="Confirm Password" required>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <button type="submit" class="btn btn-block btn1">Register</button>
+                            <p class="text-center mt-3">Already have an Account? <a href="/Auth/login">Log-In</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+    <script src="/bootstrap-5/js/Jquery.js"></script>
+    <script src="/bootstrap-5/js/bootstrap.min.js"></script>    
+</body>
+</html>

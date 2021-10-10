@@ -1,0 +1,74 @@
+<%- include('partials/header.ejs') %> 
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <h2>COVID-19 CASES IN <span id="country"></span></h2><br>
+                    <div class="row text-white">
+                        <div class="col-md-4">
+                            <div class="card bg-info">
+                                <div class="card-body">
+                                    <img src="" alt="" class="img-fluid">
+                                    <p>Active Cases</p>
+                                    <h3 id="active-cases"></h3>
+                                </div>
+                            </div><br>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-primary">
+                                <div class="card-body">
+                                    <img src="" alt="" class="img-fluid">
+                                    <p>Critical Cases</p>
+                                    <h3 id="critical-cases"></h3>
+                                </div>
+                            </div><br>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-warning">
+                                <div class="card-body">
+                                    <img src="" alt="" class="img-fluid">
+                                    <p>Recovered Cases</p>
+                                    <h3 id="recovered-cases"></h3>
+                                </div>
+                            </div><br>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-success">
+                                <div class="card-body">
+                                    <img src="" alt="" class="img-fluid">
+                                    <p>Total Cases</p>
+                                    <h3 id="total-cases"></h3>
+                                </div>
+                            </div><br>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-danger">
+                                <div class="card-body">
+                                    <img src="" alt="" class="img-fluid">
+                                    <p>Total Deaths</p>
+                                    <h3 id="total-deaths"></h3>
+                                </div>
+                            </div><br>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-secondary">
+                                <div class="card-body">
+                                    <img src="" alt="" class="img-fluid">
+                                    <p>Total Test Done</p>
+                                    <h3 id="test-done"></h3>
+                                </div>
+                            </div>
+                        </div><br>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %> 

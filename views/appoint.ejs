@@ -1,0 +1,115 @@
+<%- include('./partials/header.ejs') %> 
+
+<section class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-header text-white" style="background: #3E5DFF;">
+                    <h2>Book An Appointment</h2>
+                </div>
+                <%- include('./partials/messages.ejs') %> 
+                <div class="card-body">
+                    <form action="/appointment/create" method="POST">
+                        <div class="form-group mb-2">
+                            <label for="Firstname">FirstName <small class="text-danger"><strong>*</strong></small></label>
+                            <input type="text" name="Firstname" value="<%= user.Firstname %>" class="form-control" placeholder="" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="Lastname">LastName <small class="text-danger"><strong>*</strong></small></label>
+                            <input type="text" name="Lastname" value="<%= user.Lastname %>" class="form-control" placeholder="" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="Age">Age <small class="text-danger"><strong>*</strong></small></label>
+                            <input type="number" name="Age" class="form-control" placeholder="" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="Doctor">Doctor<small class="text-danger"><strong>*</strong></small></label>
+                            <select name="doctor" id="doctor" class="form-control" required>
+                                <option value="" selected disabled>Select Doctor</option>
+                                <% if(doctors.length > 0){ %> 
+                                    <% doctors.forEach((doctor)=>{ %>
+                                        <option value="<%= doctor._id %>">Dr. <%= doctor.Firstname %> <%= doctor.Lastname %>  </option>
+                                    <% }) %> 
+                                <% }else{ %> 
+                                    <option value="" selected disabled>No Doctors Available</option>
+                                <% } %> 
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label for="Time">Schedule Time <small class="text-danger"><strong>*</strong></small></label>
+                            <input type="time" class="form-control" name="time" id="time" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="Time-Type">Time-Type <small class="text-danger"><strong>*</strong></small></label>
+                            <select class="form-control" name="timeType" id="timeType" required>
+                                <option selected disabled>Select Time-Type</option>
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="Date">Schedule Date <small class="text-danger"><strong>*</strong></small></label>
+                            <input type="date" class="form-control" name="date" id="date" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="Condition">Current Condition <small class="text-danger"><strong>*</strong></small></label>
+                            <select class="form-control" name="condition" id="condition" required>
+                                <option selected disabled>Select Condition</option>
+                                <option value="Critical">Critical</option>
+                                <option value="Non-critical">Non-critical</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-block" style="background: #3E5DFF; color: white;">Book</button>
+                    </form>
+                </div>
+            </div><br>
+        </div>
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header text-white" style="background: #3E5DFF;">
+                    <h2>All Bookings</h2>
+                </div>
+                <div class="card-body">
+                    <div class="responsive-table">
+                        <table class="table">
+                            <tr>
+                                <th>Time</th>
+                                <th>Date</th>
+                                <th>Doctor</th>
+                                <th>Delete</th>
+                            </tr>
+                            <% if(appoints.length > 0){ %> 
+                                <% appoints.forEach((appoint)=>{ %> 
+                                    <tr>
+                                        <td><%= appoint.time %> <%= appoint.timeType %>  </td>
+                                        <td><%= appoint.date %> </td>
+                                        <td>Dr. <%= appoint.doctor.Firstname %> <%= appoint.doctor.Lastname %>  </td>
+                                        <td>
+                                            <form action="/appointment/appoint/<%= appoint._id %>/delete?_method=DELETE" METHOD="POST">
+                                                <button type="submit" class="btn btn-danger btn-sm"><img src="\img\icons8_trash_16.png" alt="" class="img-"></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            <% }else{ %> 
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  <strong>No Appointments Available For Now :)</strong> 
+                                </div>
+                                
+                                <script>
+                                  $(".alert").alert();
+                                </script>
+                            <% } %> 
+                        </table>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('./partials/footer.ejs') %> 

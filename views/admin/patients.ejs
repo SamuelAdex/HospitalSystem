@@ -1,0 +1,38 @@
+<%- include('./partials/header.ejs') %> 
+
+<section class="container mt-5">
+    <div class="responsive-table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% if(users.length > 0){ %> 
+                    <% users.forEach((user)=>{ %> 
+                        <tr>
+                            <td><%= user.Firstname %> <%= user.Lastname %>  </td>
+                            <td><%= user.phone %> </td>
+                            <td><%= user.email %> </td>
+                            <td><a href="" class="btn btn-primary btn-sm"><img src="\img\icons8_Edit_Production_Order_16.png" alt="" class="img-fluid"></a></td>
+                            <td><button class="btn btn-danger btn-sm"><img src="\img\icons8_trash_16.png" alt="" class="img-fluid"></button></td>
+                        </tr>
+                    <% }) %> 
+                <% }else{ %> 
+                    <div class="alert alert-warning">No Users Available Yet :)</div>
+                <% } %> 
+            </tbody>
+        </table>
+    </div>
+</section>
+
+</body>
+<script src="\bootstrap-5\js\Jquery.js"></script>
+<script src="\bootstrap-5\js\bootstrap.min.js"></script>
+</html>
